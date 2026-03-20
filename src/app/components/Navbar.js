@@ -33,11 +33,12 @@ export default function Navbar({ page, setPage, username, onLogout }) {
         <span style={{
           fontFamily: 'Space Mono, monospace', fontWeight: 700,
           fontSize: 16, letterSpacing: '0.1em',
+          color: '#F8FAFC',
         }}>SIRA</span>
       </div>
 
       {/* Nav Items */}
-      <div style={{ display: 'flex', gap: 4 }}>
+      <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 4 }}>
         {navItems.map(item => (
           <button key={item.id} onClick={() => setPage(item.id)} style={{
             background: 'none', border: 'none', cursor: 'pointer',
@@ -90,14 +91,14 @@ export default function Navbar({ page, setPage, username, onLogout }) {
           fontSize: 16, cursor: 'pointer', transition: 'all 0.2s',
         }}>⚙️</button>
 
-        {/* Logout → kembali ke LoginPage */}
+        {/* Logout */}
         <button
           onClick={() => onLogout && onLogout()}
           style={{
             background: 'none',
             border: '1px solid #334155',
             borderRadius: 8, padding: '5px 12px',
-            color: '#475569', fontSize: 12, cursor: 'pointer',
+            color: '#475569', fontSize: 14, cursor: 'pointer',
             fontFamily: 'DM Sans, sans-serif',
             transition: 'all 0.2s',
           }}

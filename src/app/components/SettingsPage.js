@@ -81,21 +81,18 @@ const rarityColor = {
 
 // ─── MAIN SETTINGS PAGE ───────────────────────────────────────────────────────
 export default function SettingsPage({ username, setUsername }) {
-  // ── Profile state
   const [displayName,   setDisplayName]   = useState(username || 'Raffi akbar');
   const [bio,           setBio]           = useState('Aspiring developer | JavaScript enthusiast');
   const [heroClass,     setHeroClass]     = useState('Web Warrior');
   const [editingName,   setEditingName]   = useState(false);
   const [tempName,      setTempName]      = useState(displayName);
 
-  // ── Badge state
   const [badges,        setBadges]        = useState(allBadges);
-  const [featuredBadges,setFeaturedBadges]= useState([1, 3, 4]); // max 3 featured
-  const [filterTab,     setFilterTab]     = useState('earned');   // earned | all
+  const [featuredBadges,setFeaturedBadges]= useState([1, 3, 4]);
+  const [filterTab,     setFilterTab]     = useState('earned');
   const [sortBy,        setSortBy]        = useState('rarity');
 
-  // ── UI state
-  const [activeSection, setActiveSection] = useState('profile'); // profile | badges | display
+  const [activeSection, setActiveSection] = useState('profile');
   const [toast,         setToast]         = useState(null);
 
   const showToast = (msg, type = 'success') => {
@@ -103,7 +100,6 @@ export default function SettingsPage({ username, setUsername }) {
     setTimeout(() => setToast(null), 3000);
   };
 
-  // ── Save display name
   const saveName = () => {
     if (!tempName.trim()) return showToast('Username tidak boleh kosong!', 'error');
     if (tempName.trim().length < 3) return showToast('Username minimal 3 karakter!', 'error');
@@ -113,7 +109,6 @@ export default function SettingsPage({ username, setUsername }) {
     showToast('Username berhasil diperbarui! ✨');
   };
 
-  // ── Toggle featured badge
   const toggleFeatured = (id) => {
     const badge = badges.find(b => b.id === id);
     if (!badge?.earned) return showToast('Kamu belum mendapatkan badge ini!', 'error');
@@ -124,7 +119,6 @@ export default function SettingsPage({ username, setUsername }) {
     });
   };
 
-  // ── Filter + sort badges
   const visibleBadges = badges
     .filter(b => filterTab === 'all' ? true : b.earned)
     .sort((a, b) => sortBy === 'rarity'
@@ -141,13 +135,13 @@ export default function SettingsPage({ username, setUsername }) {
   ];
 
   return (
-    <div style={{ padding: '80px 32px 40px', minHeight: '100vh' }}>
+    <div style={{ padding: '80px 32px 40px', minHeight: '100vh', color: '#F8FAFC' }}>
       {/* Page Header */}
       <div style={{ marginBottom: 32, animation: 'fade-up 0.4s ease both' }}>
-        <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 28, fontWeight: 700 }}>
+        <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 28, fontWeight: 700, color: '#F8FAFC' }}>
           ⚙️ Settings
         </h1>
-        <p style={{ color: '#475569', fontSize: 14, marginTop: 4 }}>
+        <p style={{ color: '#94A3B8', fontSize: 14, marginTop: 4 }}>
           Kelola profil, badge, dan tampilan akun SIRA kamu
         </p>
       </div>
@@ -164,7 +158,7 @@ export default function SettingsPage({ username, setUsername }) {
               borderRadius: 8, padding: '10px 16px',
               display: 'flex', alignItems: 'center', gap: 10,
               cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s',
-              color: activeSection === item.id ? '#22D3EE' : '#475569',
+              color: activeSection === item.id ? '#22D3EE' : '#94A3B8',
               fontFamily: 'DM Sans, sans-serif', fontSize: 14, fontWeight: 500,
             }}>
               <span style={{ fontSize: 16 }}>{item.icon}</span>
@@ -177,7 +171,7 @@ export default function SettingsPage({ username, setUsername }) {
             marginTop: 16, background: '#1E293B', border: '1px solid #334155',
             borderRadius: 12, padding: 16,
           }}>
-            <div style={{ fontSize: 11, color: '#475569', fontFamily: 'Space Mono, monospace', marginBottom: 12 }}>PREVIEW</div>
+            <div style={{ fontSize: 11, color: '#94A3B8', fontFamily: 'Space Mono, monospace', marginBottom: 12 }}>PREVIEW</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
               <div style={{
                 width: 40, height: 40, borderRadius: '50%',
@@ -188,11 +182,10 @@ export default function SettingsPage({ username, setUsername }) {
                 fontFamily: 'Space Mono, monospace',
               }}>{displayName.charAt(0).toUpperCase()}</div>
               <div>
-                <div style={{ fontWeight: 600, fontSize: 13 }}>{displayName}</div>
-                <div style={{ fontSize: 11, color: '#475569' }}>{heroClass}</div>
+                <div style={{ fontWeight: 600, fontSize: 13, color: '#F8FAFC' }}>{displayName}</div>
+                <div style={{ fontSize: 11, color: '#94A3B8' }}>{heroClass}</div>
               </div>
             </div>
-            {/* Featured Badges Preview */}
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {featuredBadges.map(id => {
                 const badge = badges.find(b => b.id === id);
@@ -208,7 +201,7 @@ export default function SettingsPage({ username, setUsername }) {
                 );
               })}
               {featuredBadges.length === 0 && (
-                <span style={{ fontSize: 11, color: '#475569' }}>Belum ada badge unggulan</span>
+                <span style={{ fontSize: 11, color: '#94A3B8' }}>Belum ada badge unggulan</span>
               )}
             </div>
           </div>
@@ -225,7 +218,7 @@ export default function SettingsPage({ username, setUsername }) {
 
                 {/* Display Name */}
                 <div style={{ marginBottom: 24 }}>
-                  <label style={{ fontSize: 12, color: '#475569', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
+                  <label style={{ fontSize: 12, color: '#94A3B8', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
                     DISPLAY NAME
                   </label>
                   {editingName ? (
@@ -253,7 +246,7 @@ export default function SettingsPage({ username, setUsername }) {
                       }}>Simpan</button>
                       <button onClick={() => { setEditingName(false); setTempName(displayName); }} style={{
                         background: 'none', border: '1px solid #334155', borderRadius: 8,
-                        padding: '10px 16px', color: '#475569', cursor: 'pointer', fontSize: 13,
+                        padding: '10px 16px', color: '#94A3B8', cursor: 'pointer', fontSize: 13,
                       }}>Batal</button>
                     </div>
                   ) : (
@@ -272,14 +265,14 @@ export default function SettingsPage({ username, setUsername }) {
                       }}>✏️ Edit</button>
                     </div>
                   )}
-                  <div style={{ fontSize: 11, color: '#475569', marginTop: 6 }}>
+                  <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 6 }}>
                     {tempName.length}/30 karakter · Nama ini tampil di semua halaman publik
                   </div>
                 </div>
 
                 {/* Bio */}
                 <div style={{ marginBottom: 24 }}>
-                  <label style={{ fontSize: 12, color: '#475569', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
+                  <label style={{ fontSize: 12, color: '#94A3B8', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
                     BIO
                   </label>
                   <textarea
@@ -297,12 +290,12 @@ export default function SettingsPage({ username, setUsername }) {
                     onFocus={e => e.target.style.borderColor = '#22D3EE'}
                     onBlur={e => e.target.style.borderColor = '#334155'}
                   />
-                  <div style={{ fontSize: 11, color: '#475569', marginTop: 4 }}>{bio.length}/120 karakter</div>
+                  <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 4 }}>{bio.length}/120 karakter</div>
                 </div>
 
                 {/* Hero Class */}
                 <div>
-                  <label style={{ fontSize: 12, color: '#475569', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
+                  <label style={{ fontSize: 12, color: '#94A3B8', fontFamily: 'Space Mono, monospace', display: 'block', marginBottom: 8 }}>
                     HERO CLASS
                   </label>
                   <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -311,7 +304,7 @@ export default function SettingsPage({ username, setUsername }) {
                         background: heroClass === cls ? 'rgba(167,139,250,0.15)' : '#0F172A',
                         border: `1px solid ${heroClass === cls ? '#A78BFA' : '#334155'}`,
                         borderRadius: 8, padding: '8px 16px', cursor: 'pointer',
-                        color: heroClass === cls ? '#A78BFA' : '#475569',
+                        color: heroClass === cls ? '#A78BFA' : '#94A3B8',
                         fontSize: 13, fontFamily: 'DM Sans, sans-serif',
                         transition: 'all 0.2s',
                       }}>{cls}</button>
@@ -320,7 +313,6 @@ export default function SettingsPage({ username, setUsername }) {
                 </div>
               </Card>
 
-              {/* Save Button */}
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <button onClick={() => showToast('Profil berhasil disimpan! ✨')} style={{
                   background: 'linear-gradient(135deg, #22D3EE, #A78BFA)',
@@ -337,16 +329,13 @@ export default function SettingsPage({ username, setUsername }) {
           {/* ════ SECTION: BADGE & LENCANA ════ */}
           {activeSection === 'badges' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-
-              {/* Featured Badges */}
               <Card>
                 <SectionTitle icon="⭐" title="Badge Unggulan" />
-                <p style={{ color: '#475569', fontSize: 13, marginBottom: 20 }}>
+                <p style={{ color: '#94A3B8', fontSize: 13, marginBottom: 20 }}>
                   Pilih hingga <strong style={{ color: '#22D3EE' }}>3 badge</strong> untuk ditampilkan di profil publikmu.
                   Klik badge di bawah untuk menambah/melepas dari unggulan.
                 </p>
 
-                {/* Featured slots */}
                 <div style={{ display: 'flex', gap: 16, marginBottom: 24 }}>
                   {[0, 1, 2].map(slot => {
                     const id    = featuredBadges[slot];
@@ -377,7 +366,7 @@ export default function SettingsPage({ username, setUsername }) {
                         ) : (
                           <>
                             <span style={{ fontSize: 24, opacity: 0.3 }}>🏅</span>
-                            <span style={{ fontSize: 11, color: '#475569' }}>Slot {slot + 1}</span>
+                            <span style={{ fontSize: 11, color: '#94A3B8' }}>Slot {slot + 1}</span>
                           </>
                         )}
                       </div>
@@ -386,11 +375,9 @@ export default function SettingsPage({ username, setUsername }) {
                 </div>
               </Card>
 
-              {/* Badge Collection */}
               <Card>
                 <SectionTitle icon="🎖️" title="Koleksi Badge" />
 
-                {/* Filter + Sort */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                   <div style={{ display: 'flex', gap: 8 }}>
                     {[['earned','✅ Diperoleh'],['all','🔓 Semua']].map(([val, label]) => (
@@ -398,14 +385,14 @@ export default function SettingsPage({ username, setUsername }) {
                         background: filterTab === val ? 'rgba(34,211,238,0.15)' : '#0F172A',
                         border: `1px solid ${filterTab === val ? '#22D3EE' : '#334155'}`,
                         borderRadius: 8, padding: '6px 14px', cursor: 'pointer',
-                        color: filterTab === val ? '#22D3EE' : '#475569',
+                        color: filterTab === val ? '#22D3EE' : '#94A3B8',
                         fontSize: 12, fontFamily: 'Space Mono, monospace',
                       }}>{label}</button>
                     ))}
                   </div>
                   <select value={sortBy} onChange={e => setSortBy(e.target.value)} style={{
                     background: '#0F172A', border: '1px solid #334155', borderRadius: 8,
-                    padding: '6px 12px', color: '#475569', fontSize: 12,
+                    padding: '6px 12px', color: '#94A3B8', fontSize: 12,
                     fontFamily: 'Space Mono, monospace', cursor: 'pointer', outline: 'none',
                   }}>
                     <option value="rarity">Sort: Rarity</option>
@@ -413,7 +400,6 @@ export default function SettingsPage({ username, setUsername }) {
                   </select>
                 </div>
 
-                {/* Badge Grid */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
                   {visibleBadges.map(badge => {
                     const isFeatured = featuredBadges.includes(badge.id);
@@ -422,7 +408,7 @@ export default function SettingsPage({ username, setUsername }) {
                       <div key={badge.id}
                         onClick={() => badge.earned && toggleFeatured(badge.id)}
                         style={{
-                          background: isFeatured ? `${col}15` : badge.earned ? '#0F172A' : '#0F172A',
+                          background: isFeatured ? `${col}15` : '#0F172A',
                           border: `1px solid ${isFeatured ? col : badge.earned ? '#334155' : '#1E293B'}`,
                           borderRadius: 10, padding: '14px 16px',
                           display: 'flex', alignItems: 'center', gap: 12,
@@ -432,7 +418,6 @@ export default function SettingsPage({ username, setUsername }) {
                           position: 'relative',
                           filter: badge.earned ? 'none' : 'grayscale(1)',
                         }}>
-                        {/* Featured indicator */}
                         {isFeatured && (
                           <div style={{
                             position: 'absolute', top: 6, right: 6,
@@ -450,8 +435,8 @@ export default function SettingsPage({ username, setUsername }) {
                           boxShadow: isFeatured ? `0 0 12px ${col}44` : 'none',
                         }}>{badge.icon}</div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 2 }}>{badge.name}</div>
-                          <div style={{ fontSize: 11, color: '#475569', marginBottom: 6 }}>{badge.desc}</div>
+                          <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 2, color: '#F8FAFC' }}>{badge.name}</div>
+                          <div style={{ fontSize: 11, color: '#94A3B8', marginBottom: 6 }}>{badge.desc}</div>
                           <NeonBadge color={col}>{badge.rarity}</NeonBadge>
                         </div>
                       </div>
@@ -460,7 +445,7 @@ export default function SettingsPage({ username, setUsername }) {
                 </div>
 
                 {visibleBadges.length === 0 && (
-                  <div style={{ textAlign: 'center', padding: '40px 0', color: '#475569' }}>
+                  <div style={{ textAlign: 'center', padding: '40px 0', color: '#94A3B8' }}>
                     <div style={{ fontSize: 40, marginBottom: 12 }}>🔒</div>
                     <div style={{ fontSize: 14 }}>Belum ada badge yang diperoleh</div>
                     <div style={{ fontSize: 12, marginTop: 4 }}>Selesaikan quest untuk mendapatkan badge!</div>
@@ -475,7 +460,7 @@ export default function SettingsPage({ username, setUsername }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               <Card>
                 <SectionTitle icon="🎨" title="Tampilan Profil Publik" />
-                <p style={{ color: '#475569', fontSize: 13, marginBottom: 24 }}>
+                <p style={{ color: '#94A3B8', fontSize: 13, marginBottom: 24 }}>
                   Atur informasi yang tampil ketika orang lain mengunjungi profilmu.
                 </p>
 
@@ -491,14 +476,13 @@ export default function SettingsPage({ username, setUsername }) {
                 ))}
               </Card>
 
-              {/* Profile URL */}
               <Card>
                 <SectionTitle icon="🔗" title="Link Profil" />
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   <div style={{
                     flex: 1, background: '#0F172A', border: '1px solid #334155',
                     borderRadius: 8, padding: '10px 14px',
-                    color: '#475569', fontSize: 13, fontFamily: 'Space Mono, monospace',
+                    color: '#94A3B8', fontSize: 13, fontFamily: 'Space Mono, monospace',
                   }}>
                     sira.app/profile/<span style={{ color: '#22D3EE' }}>
                       {displayName.toLowerCase().replace(/\s+/g, '-')}
@@ -527,7 +511,6 @@ export default function SettingsPage({ username, setUsername }) {
         </div>
       </div>
 
-      {/* Toast Notification */}
       {toast && <Toast message={toast.message} type={toast.type} />}
     </div>
   );
@@ -541,7 +524,7 @@ function ToggleRow({ label, defaultChecked }) {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '12px 0', borderBottom: '1px solid #1E293B',
     }}>
-      <span style={{ fontSize: 14, color: checked ? '#F8FAFC' : '#475569' }}>{label}</span>
+      <span style={{ fontSize: 14, color: checked ? '#F8FAFC' : '#94A3B8' }}>{label}</span>
       <div
         onClick={() => setChecked(!checked)}
         style={{

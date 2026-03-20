@@ -34,15 +34,15 @@ export default function SquadPage() {
   const toggleJoin = (id) => setSquads(prev => prev.map(s => s.id===id ? {...s, joined:!s.joined} : s));
 
   return (
-    <div style={{ padding: '80px 32px 32px' }}>
+    <div style={{ padding: '80px 32px 32px', color: '#F8FAFC' }}>
       <div style={{ animation: 'fade-up 0.4s ease both', marginBottom: 28 }}>
-        <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 28, fontWeight: 700 }}>Squad &amp; Community</h1>
-        <p style={{ color: '#475569', fontSize: 14, marginTop: 4 }}>Learn together, grow together</p>
+        <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 28, fontWeight: 700, color: '#F8FAFC' }}>Squad &amp; Community</h1>
+        <p style={{ color: '#94A3B8', fontSize: 14, marginTop: 4 }}>Learn together, grow together</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24, alignItems: 'start' }}>
         <div>
-          <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 16, color: '#475569', marginBottom: 16 }}>Available Squads</h2>
+          <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 16, color: '#94A3B8', marginBottom: 16 }}>Available Squads</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             {squads.map((squad,i) => {
               const col = levelColor[squad.level];
@@ -54,9 +54,9 @@ export default function SquadPage() {
                 }}>
                   <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:12 }}>
                     <div>
-                      <div style={{ fontWeight:700, fontSize:16, marginBottom:8 }}>{squad.name}</div>
+                      <div style={{ fontWeight:700, fontSize:16, marginBottom:8, color: '#F8FAFC' }}>{squad.name}</div>
                       <div style={{ display:'flex', gap:8, alignItems:'center' }}>
-                        <span style={{ fontSize:12, color:'#475569' }}>👥 {squad.members} members</span>
+                        <span style={{ fontSize:12, color:'#94A3B8' }}>👥 {squad.members} members</span>
                         <NeonBadge color={col}>{squad.level}</NeonBadge>
                       </div>
                     </div>
@@ -70,7 +70,7 @@ export default function SquadPage() {
                   <div style={{ display:'flex', alignItems:'center', gap:8, color:'#34D399', fontSize:13 }}>
                     <span>↑</span>
                     <span style={{ fontFamily:'Space Mono, monospace', fontWeight:700 }}>{squad.xp.toLocaleString()}</span>
-                    <span style={{ color:'#475569' }}>total XP earned</span>
+                    <span style={{ color:'#94A3B8' }}>total XP earned</span>
                   </div>
                   {squad.joined && <div style={{ marginTop:14 }}><XPBar current={squad.xp} max={30000} color={col} height={4} /></div>}
                 </div>
@@ -80,10 +80,10 @@ export default function SquadPage() {
         </div>
 
         <div>
-          <div style={{ background:'#1E293B', border:'1px solid #334155', borderRadius:12, padding:20, position:'sticky', top:80 }}>
+          <div style={{ background:'#1E293B', border:'1px solid #334155', borderRadius:12, padding:20 }}>
             <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20 }}>
               <span style={{ color:'#F59E0B', fontSize:20 }}>🏆</span>
-              <h2 style={{ fontFamily:'Space Mono, monospace', fontSize:16, fontWeight:700 }}>Global Top 5</h2>
+              <h2 style={{ fontFamily:'Space Mono, monospace', fontSize:16, fontWeight:700, color: '#F8FAFC' }}>Global Top 5</h2>
             </div>
             <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
               {leaderboard.map((player,i) => {
@@ -105,7 +105,7 @@ export default function SquadPage() {
                       }}>{player.rank}</div>
                       <div>
                         <div style={{ fontWeight:600, fontSize:13, color:player.isYou?'#22D3EE':'#F8FAFC' }}>{player.name}</div>
-                        <div style={{ fontSize:10, color:'#475569' }}>Lvl {player.lvl}</div>
+                        <div style={{ fontSize:10, color:'#94A3B8' }}>Lvl {player.lvl}</div>
                       </div>
                     </div>
                     <span style={{ fontFamily:'Space Mono, monospace', fontWeight:700, fontSize:13, color:player.isYou?'#22D3EE':'#F8FAFC' }}>

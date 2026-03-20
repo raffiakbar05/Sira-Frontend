@@ -58,21 +58,21 @@ export default function AdventurePage({ setPage }) {
   };
 
   return (
-    <div style={{ paddingTop: 60, minHeight: '100vh' }}>
+    <div style={{ paddingTop: 60, minHeight: '100vh', color: '#F8FAFC' }}>
       <div style={{ padding: '32px 32px 0' }}>
         <div style={{ animation: 'fade-up 0.5s ease both' }}>
-          <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 32, fontWeight: 700, marginBottom: 6 }}>Adventure Map</h1>
-          <p style={{ color: '#475569', fontSize: 14 }}>Selamat datang kembali, Raffi akbar! Lanjutkan petualangan coding Anda</p>
+          <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 32, fontWeight: 700, marginBottom: 6, color: '#F8FAFC' }}>Adventure Map</h1>
+          <p style={{ color: '#94A3B8', fontSize: 14 }}>Selamat datang kembali, Raffi akbar! Lanjutkan petualangan coding Anda</p>
         </div>
 
         <Card style={{ marginTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <div style={{ fontFamily: 'Space Mono, monospace', fontWeight: 700, fontSize: 18, marginBottom: 4 }}>Level 1</div>
-            <div style={{ color: '#475569', fontSize: 13 }}>0 / 5000 EXP</div>
+            <div style={{ fontFamily: 'Space Mono, monospace', fontWeight: 700, fontSize: 18, marginBottom: 4, color: '#F8FAFC' }}>Level 1</div>
+            <div style={{ color: '#94A3B8', fontSize: 13 }}>0 / 5000 EXP</div>
           </div>
           <div style={{ width: '55%' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-              <span style={{ fontSize: 12, color: '#475569' }}>Progress</span>
+              <span style={{ fontSize: 12, color: '#94A3B8' }}>Progress</span>
               <NeonBadge color="#22D3EE">0%</NeonBadge>
             </div>
             <XPBar current={0} max={5000} />
@@ -163,15 +163,15 @@ export default function AdventurePage({ setPage }) {
           }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                <span style={{ fontFamily: 'Space Mono, monospace', fontSize: 18, fontWeight: 700 }}>{selectedQuest.title}</span>
+                <span style={{ fontFamily: 'Space Mono, monospace', fontSize: 18, fontWeight: 700, color: '#F8FAFC' }}>{selectedQuest.title}</span>
                 <NeonBadge color={regionColors[selectedQuest.region]}>+{selectedQuest.xp} XP</NeonBadge>
               </div>
-              <p style={{ color: '#475569', fontSize: 14 }}>{selectedQuest.desc}</p>
+              <p style={{ color: '#94A3B8', fontSize: 14 }}>{selectedQuest.desc}</p>
             </div>
             <div style={{ display: 'flex', gap: 10 }}>
               <button onClick={() => setSelectedQuest(null)} style={{
                 background: 'none', border: '1px solid #334155', borderRadius: 8,
-                padding: '8px 16px', color: '#475569', cursor: 'pointer', fontSize: 13,
+                padding: '8px 16px', color: '#94A3B8', cursor: 'pointer', fontSize: 13,
               }}>Tutup</button>
               <button onClick={() => setPage('workshop')} style={{
                 background: regionColors[selectedQuest.region], border: 'none', borderRadius: 8,
@@ -184,7 +184,7 @@ export default function AdventurePage({ setPage }) {
 
         {/* Lesson Cards */}
         <div style={{ marginTop: 32 }}>
-          <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 20, fontWeight: 700, marginBottom: 16 }}>Pelajaran</h2>
+          <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 20, fontWeight: 700, marginBottom: 16, color: '#F8FAFC' }}>Pelajaran</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
             {questsData.slice(0,6).map((quest,i) => {
               const col = regionColors[quest.region];
@@ -194,8 +194,8 @@ export default function AdventurePage({ setPage }) {
                   style={{ animation:`fade-up ${0.3+i*0.06}s ease both`, opacity:quest.status==='locked'?0.5:1 }}>
                   <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:8 }}>
                     <div>
-                      <div style={{ fontWeight:600, fontSize:15 }}>{quest.title}</div>
-                      <div style={{ color:'#475569', fontSize:12, marginTop:2 }}>{quest.desc}</div>
+                      <div style={{ fontWeight:600, fontSize:15, color: '#F8FAFC' }}>{quest.title}</div>
+                      <div style={{ color:'#94A3B8', fontSize:12, marginTop:2 }}>{quest.desc}</div>
                     </div>
                     <span style={{ fontSize:20 }}>
                       {quest.status==='done'?'✅':quest.status==='active'?'⏱️':'🔒'}

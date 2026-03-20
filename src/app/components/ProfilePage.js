@@ -64,7 +64,7 @@ function RadarChart() {
         const [x, y] = point(i, 1.22);
         return (
           <text key={i} x={x} y={y} textAnchor="middle" dominantBaseline="central"
-            fontSize={9} fill="#475569" fontFamily="Space Mono">{s.label}</text>
+            fontSize={9} fill="#94A3B8" fontFamily="Space Mono">{s.label}</text>
         );
       })}
     </svg>
@@ -95,7 +95,6 @@ export default function ProfilePage({
 }) {
   const initial = (username || 'R').charAt(0).toUpperCase();
 
-  // Resolve featured badge objects
   const allBadges = [
     { id: 1,  name: 'First Steps',    icon: '⚡', desc: 'Complete first lesson',      earned: true,  rarity: 'common'    },
     { id: 2,  name: 'Week Warrior',   icon: '🔥', desc: '7-day streak',               earned: false, rarity: 'rare'      },
@@ -112,7 +111,7 @@ export default function ProfilePage({
     .filter(Boolean);
 
   return (
-    <div style={{ padding: '80px 32px 32px' }}>
+    <div style={{ padding: '80px 32px 32px', color: '#F8FAFC' }}>
 
       {/* ── Hero Card ── */}
       <div style={{
@@ -134,9 +133,8 @@ export default function ProfilePage({
 
           {/* Info */}
           <div style={{ flex: 1 }}>
-            {/* Name + Level + Edit button */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
-              <span style={{ fontFamily: 'Space Mono, monospace', fontSize: 22, fontWeight: 700 }}>
+              <span style={{ fontFamily: 'Space Mono, monospace', fontSize: 22, fontWeight: 700, color: '#F8FAFC' }}>
                 {username}
               </span>
               <NeonBadge color="#22D3EE">Level 1</NeonBadge>
@@ -145,14 +143,13 @@ export default function ProfilePage({
                 <button onClick={() => setPage('settings')} style={{
                   marginLeft: 'auto',
                   background: 'none', border: '1px solid #334155', borderRadius: 8,
-                  padding: '4px 12px', color: '#475569', cursor: 'pointer',
+                  padding: '4px 12px', color: '#94A3B8', cursor: 'pointer',
                   fontSize: 12, display: 'flex', alignItems: 'center', gap: 6,
                   transition: 'all 0.2s',
                 }}>✏️ Edit Profil</button>
               )}
             </div>
 
-            {/* Bio */}
             <p style={{
               color: '#94A3B8', fontSize: 13, marginBottom: 10,
               fontStyle: 'italic', lineHeight: 1.5,
@@ -160,15 +157,13 @@ export default function ProfilePage({
               {bio || 'Belum ada bio. Tambahkan di Settings!'}
             </p>
 
-            {/* Joined */}
-            <div style={{ color: '#475569', fontSize: 12, marginBottom: 12 }}>
+            <div style={{ color: '#94A3B8', fontSize: 12, marginBottom: 12 }}>
               📅 Joined Mar 2026
             </div>
 
-            {/* Featured Badges */}
             {featuredList.length > 0 && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                <span style={{ fontSize: 11, color: '#475569', fontFamily: 'Space Mono, monospace' }}>
+                <span style={{ fontSize: 11, color: '#94A3B8', fontFamily: 'Space Mono, monospace' }}>
                   BADGE UNGGULAN
                 </span>
                 {featuredList.map(badge => (
@@ -187,8 +182,7 @@ export default function ProfilePage({
               </div>
             )}
 
-            {/* XP Bar */}
-            <div style={{ fontSize: 12, color: '#475569', marginBottom: 6 }}>
+            <div style={{ fontSize: 12, color: '#94A3B8', marginBottom: 6 }}>
               Level Progress — 0 / 5000 XP
             </div>
             <XPBar current={0} max={5000} height={8} />
@@ -204,7 +198,7 @@ export default function ProfilePage({
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{ color: '#22D3EE', marginBottom: 4, fontSize: 18 }}>{icon}</div>
                 <div style={{ fontSize: 22, fontWeight: 700, fontFamily: 'Space Mono, monospace', color: '#F8FAFC' }}>{value}</div>
-                <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{label}</div>
+                <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 2 }}>{label}</div>
               </div>
             ))}
           </div>
@@ -221,7 +215,7 @@ export default function ProfilePage({
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
             <span style={{ color: '#22D3EE' }}>◎</span>
-            <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 18, fontWeight: 700 }}>
+            <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 18, fontWeight: 700, color: '#F8FAFC' }}>
               Learning History
             </h2>
           </div>
@@ -240,10 +234,10 @@ export default function ProfilePage({
                     display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16,
                   }}>✓</div>
                   <div>
-                    <div style={{ fontWeight: 600, fontSize: 14 }}>{item.title}</div>
+                    <div style={{ fontWeight: 600, fontSize: 14, color: '#F8FAFC' }}>{item.title}</div>
                     <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
                       <NeonBadge color="#22D3EE">{item.type}</NeonBadge>
-                      <span style={{ fontSize: 11, color: '#475569' }}>📅 {item.time}</span>
+                      <span style={{ fontSize: 11, color: '#94A3B8' }}>📅 {item.time}</span>
                     </div>
                   </div>
                 </div>
@@ -269,7 +263,7 @@ export default function ProfilePage({
           }}>
             <h3 style={{
               fontFamily: 'Space Mono, monospace', fontSize: 14,
-              fontWeight: 700, marginBottom: 16, color: '#475569',
+              fontWeight: 700, marginBottom: 16, color: '#94A3B8',
             }}>SKILL CHART</h3>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <RadarChart />
@@ -282,13 +276,13 @@ export default function ProfilePage({
             borderRadius: 12, padding: 20, animation: 'fade-up 0.6s ease both',
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-              <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 16, fontWeight: 700 }}>
+              <h2 style={{ fontFamily: 'Space Mono, monospace', fontSize: 16, fontWeight: 700, color: '#F8FAFC' }}>
                 Achievements
               </h2>
               {setPage && (
                 <button onClick={() => setPage('settings')} style={{
                   background: 'none', border: '1px solid #334155', borderRadius: 6,
-                  padding: '4px 10px', color: '#475569', cursor: 'pointer', fontSize: 11,
+                  padding: '4px 10px', color: '#94A3B8', cursor: 'pointer', fontSize: 11,
                   fontFamily: 'Space Mono, monospace',
                 }}>⚙️ Kelola</button>
               )}
@@ -306,12 +300,12 @@ export default function ProfilePage({
                 }}>
                   <span style={{ fontSize: 22 }}>{badge.icon}</span>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 600, fontSize: 13 }}>{badge.name}</div>
-                    <div style={{ fontSize: 11, color: '#475569' }}>{badge.desc}</div>
+                    <div style={{ fontWeight: 600, fontSize: 13, color: '#F8FAFC' }}>{badge.name}</div>
+                    <div style={{ fontSize: 11, color: '#94A3B8' }}>{badge.desc}</div>
                   </div>
                   {badge.earned
                     ? <NeonBadge color="#F59E0B">✓</NeonBadge>
-                    : <span style={{ fontSize: 11, color: '#475569' }}>🔒</span>
+                    : <span style={{ fontSize: 11, color: '#94A3B8' }}>🔒</span>
                   }
                 </div>
               ))}

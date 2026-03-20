@@ -42,13 +42,13 @@ const heroClasses = [
     focus: 'Python & AI / ML',
     startRegion: 'Data Highlands',
     regionColor: '#A78BFA',
-    desc: 'Kamu adalah penjelajah yang membaca pola di balik data. Jalur ini membawamu ke dunia Python, machine learning, dan kecerdasan buatan.',
+    desc: 'Kamu adalah penjelajah yang mahir membaca pola tersembunyi di balik tumpukan data. Jalur ini membawamu menyelami dunia Python, machine learning, dan kecerdasan buatan.',
     skills: ['Python', 'Data Analysis', 'Machine Learning', 'Neural Networks'],
     quests: ['Python Basics', 'NumPy & Pandas', 'ML Fundamentals', 'Neural Networks'],
     gradient: 'linear-gradient(135deg, rgba(167,139,250,0.15), rgba(167,139,250,0.03))',
     border: '#A78BFA',
     glow: 'rgba(167,139,250,0.3)',
-  },
+  },  
 ];
 
 // ─── PROLOGUE SCREEN ──────────────────────────────────────────────────────────
@@ -179,6 +179,7 @@ function HeroCard({ hero, selected, onSelect }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        height: '100%',
         background: active ? hero.gradient : 'rgba(30,41,59,0.6)',
         border: `2px solid ${active ? hero.border : '#334155'}`,
         borderRadius: 16, padding: 24, cursor: 'pointer',
@@ -378,6 +379,7 @@ export default function HeroCustomization({ username, onComplete }) {
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 20, marginBottom: 40,
+          alignItems: 'stretch',
           animation: 'fade-up 0.6s ease both',
         }}>
           {heroClasses.map(h => (

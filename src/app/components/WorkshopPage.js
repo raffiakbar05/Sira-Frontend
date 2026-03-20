@@ -20,21 +20,21 @@ export default function WorkshopPage() {
   };
 
   return (
-    <div style={{ paddingTop: 60, height: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ paddingTop: 60, height: '100vh', display: 'flex', flexDirection: 'column', color: '#F8FAFC' }}>
       {/* Header */}
       <div style={{
         padding: '16px 32px', borderBottom: '1px solid #334155',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <div>
-          <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 20, fontWeight: 700 }}>Workshop — Free Coding</h1>
-          <p style={{ color: '#475569', fontSize: 13, marginTop: 2 }}>Learn and practice coding with templates</p>
+          <h1 style={{ fontFamily: 'Space Mono, monospace', fontSize: 20, fontWeight: 700, color: '#F8FAFC' }}>Workshop — Free Coding</h1>
+          <p style={{ color: '#94A3B8', fontSize: 13, marginTop: 2 }}>Learn and practice coding with templates</p>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
           {[['📋','Templates'],['↩','Reset']].map(([icon,label]) => (
             <button key={label} style={{
               background: 'none', border: '1px solid #334155', borderRadius: 8,
-              padding: '7px 14px', color: '#475569', cursor: 'pointer', fontSize: 13,
+              padding: '7px 14px', color: '#94A3B8', cursor: 'pointer', fontSize: 13,
               display: 'flex', alignItems: 'center', gap: 6,
             }}>{icon} {label}</button>
           ))}
@@ -47,7 +47,7 @@ export default function WorkshopPage() {
           }}>{running ? '⟳' : '▶'} Run</button>
           <button style={{
             background: 'none', border: '1px solid #334155', borderRadius: 8,
-            padding: '7px 14px', color: '#475569', cursor: 'pointer', fontSize: 13,
+            padding: '7px 14px', color: '#94A3B8', cursor: 'pointer', fontSize: 13,
             display: 'flex', alignItems: 'center', gap: 6,
           }}>⬇ Download</button>
         </div>
@@ -60,7 +60,7 @@ export default function WorkshopPage() {
             <button key={tab} onClick={() => setActiveTab(tab)} style={{
               background: 'none', border: 'none', cursor: 'pointer',
               padding: '10px 24px', fontSize: 12, fontFamily: 'Space Mono, monospace', fontWeight: 700,
-              color: activeTab===tab ? '#22D3EE' : '#475569',
+              color: activeTab===tab ? '#22D3EE' : '#94A3B8',
               borderBottom: activeTab===tab ? '2px solid #22D3EE' : '2px solid transparent',
               textTransform: 'uppercase', letterSpacing: '0.1em',
             }}>{tab}</button>
@@ -76,12 +76,12 @@ export default function WorkshopPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: '1px solid #334155' }}>
             <div style={{ overflow: 'hidden', borderRight: '1px solid #334155' }}>
-              <div style={{ background: '#1E293B', padding: '8px 16px', fontSize: 11, color: '#475569', fontFamily: 'Space Mono, monospace', borderBottom: '1px solid #334155' }}>PREVIEW</div>
+              <div style={{ background: '#1E293B', padding: '8px 16px', fontSize: 11, color: '#94A3B8', fontFamily: 'Space Mono, monospace', borderBottom: '1px solid #334155' }}>PREVIEW</div>
               <iframe srcDoc={`${html}<style>${css}</style><script>${js}</script>`}
                 style={{ width: '100%', height: 'calc(100% - 33px)', border: 'none', background: '#fff' }} title="preview" />
             </div>
             <div style={{ overflow: 'hidden' }}>
-              <div style={{ background: '#1E293B', padding: '8px 16px', fontSize: 11, color: '#475569', fontFamily: 'Space Mono, monospace', borderBottom: '1px solid #334155' }}>CONSOLE OUTPUT</div>
+              <div style={{ background: '#1E293B', padding: '8px 16px', fontSize: 11, color: '#94A3B8', fontFamily: 'Space Mono, monospace', borderBottom: '1px solid #334155' }}>CONSOLE OUTPUT</div>
               <div style={{ padding: 16, fontFamily: 'Space Mono, monospace', fontSize: 12, background: '#070F1A', height: 'calc(100% - 33px)' }}>
                 {consoleLog.length===0
                   ? <span style={{ color: '#475569' }}>Run code to see output</span>
